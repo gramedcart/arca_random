@@ -1,0 +1,40 @@
+body{
+    margin: 0px;
+}
+
+.header{
+    width: 100vw;
+    height: 10vh;
+    border-bottom: solid 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.logo{
+    height: 80%;
+}
+
+.input{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#temp{
+    visibility: hidden !important;
+    height: 0px !important;
+}
+
+#rand{
+    font-size: 24px;
+}
+
+#loading{
+    visibility: hidden;
+}
