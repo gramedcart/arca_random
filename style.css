@@ -4,7 +4,7 @@ body{
 
 .header{
     width: 100vw;
-    height: 10vh;
+    height: 50px;
     border-bottom: solid 2px;
     display: flex;
     align-items: center;
