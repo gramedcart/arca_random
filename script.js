@@ -29,11 +29,14 @@ async function run() {
             }
             let isAdded = false
             for (let i = 1; i < v.length; i++) {
-                const name = decodeURIComponent(v[i].getAttribute('href').split('@')[1])
-                if(!Ulist.includes(name)){
-                    isAdded = true
-                    Ulist.push(name)
+                try{
+                    const name = decodeURIComponent(v[i].getAttribute('href').split('@')[1])
+                    if(!Ulist.includes(name)){
+                        isAdded = true
+                        Ulist.push(name)
+                    }
                 }
+                catch{}
             }
             if (!isAdded){
                 console.log(Ulist)
