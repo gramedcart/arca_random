@@ -70,7 +70,9 @@ async function run() {
     loading.innerText = '유저 뽑는중'
     let tcz = [authorname]
     let gojiCheck = []
-    for(let i=0;i<document.getElementById('count').value;i++){
+    const cou = document.getElementById('count').value
+    for(let i=0;i<cou;i++){
+        loading.innerText = `유저 뽑는중 ${i} / ${cou}`
         for(let i2=0;i2<1000;i2++){
             const target = Ulist[Math.floor(Math.random() * Ulist.length)]
             console.log(Ulist)
@@ -78,7 +80,6 @@ async function run() {
                 continue
             }
             if(bugoji){
-                
                 if(gojiCheck.includes(target)){
                     continue
                 }
