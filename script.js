@@ -107,7 +107,7 @@ async function run() {
     if(tcz.length === 0){
 
         loading.innerText = oldMode ? 
-            '추첨에 실패하였습니다\n느린 안전 모드를 켜고 시도해 보세요' :
+            '추첨에 실패하였습니다\n안전 모드를 켜고 시도해 보세요' :
             "추첨에 실패하였습니다"
 
     }
