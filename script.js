@@ -1,9 +1,18 @@
 "use strict";
 
+let running = false
+
+async function run(){
+    if(running){
+        return
+    }
+    running = true
+    await run2()
+    running = false
+}
 
 
-
-async function run() {
+async function run2() {
     const loading = document.getElementById('loading')
     loading.style.visibility = 'visible'
     const url = document.getElementById('link').value
