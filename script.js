@@ -85,7 +85,7 @@ async function run() {
                 console.log(userUrl)
                 try {
                     const v = await axios.get(`${baseUrl}${userUrl}`)
-                    if(v.data.split(Channel).length < 20){
+                    if(v.data.split(Channel).length < 30){
                         continue
                     }
                 } catch (error) {}
