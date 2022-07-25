@@ -73,6 +73,7 @@ async function run() {
     for(let i=0;i<document.getElementById('count').value;i++){
         for(let i2=0;i2<1000;i2++){
             const target = Ulist[Math.floor(Math.random() * Ulist.length)]
+            console.log(Ulist)
             if(tcz.includes(target)){
                 continue
             }
@@ -85,10 +86,14 @@ async function run() {
                 console.log(userUrl)
                 try {
                     const v = await axios.get(`${baseUrl}${userUrl}`)
+                    console.log(v.data.split(Channel).length)
                     if(v.data.split(Channel).length < 30){
+                        gojiCheck.push(target)
                         continue
                     }
-                } catch (error) {}
+                } catch (error) {
+                    console.log(error)
+                }
             }
             tcz.push(target)
             break
