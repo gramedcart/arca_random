@@ -72,7 +72,7 @@ async function run2() {
             break
         }
     }
-    const Channel = `/b/${url.split('/b/')[1].split('/')[0]}`
+    const Channel = `/b/${url.split('/b/')[1].split('/')[0]}/`
     loading.innerText = '유저 뽑는중'
     let tcz = [authorname]
     let gojiCheck = []
@@ -91,7 +91,19 @@ async function run2() {
                 const userUrl = `https://arca.live/u/@${encodeURIComponent(target)}`
                 try {
                     const v = await axios.get(`${baseUrl}${userUrl}`)
-                    if(v.data.split(Channel).length < 30){
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(v.data,"text/html");
+                    const l = xmlDoc.querySelectorAll('.card-block a');
+                    let len = 0
+                    for(let c of l){
+                        const h = c.getAttribute('href')
+                        console.log(h)
+                        if(h.startsWith(Channel) && (!h.includes('#c'))){
+                            console.log('acceptable')
+                            len += 1
+                        }
+                    }
+                    if(len < 5){
                         gojiCheck.push(target)
                         continue
                     }
