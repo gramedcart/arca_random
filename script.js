@@ -49,9 +49,9 @@ async function run2() {
                     cp: page,
                 },
             });
-            tempDiv.innerHTML = ''
-            tempDiv.innerHTML = (response.data)
-            let v = tempDiv.querySelectorAll('.info-row .user-info a')
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(response.data,"text/html");
+            let v = xmlDoc.querySelectorAll('.info-row .user-info a')
             if (pre == v){
                 break
             }
@@ -67,15 +67,12 @@ async function run2() {
                 break
             }
             page += 1
-            tempDiv.innerHTML = ''
         }
         catch{
-            tempDiv.innerHTML = ''
             break
         }
     }
     const Channel = `/b/${url.split('/b/')[1].split('/')[0]}`
-    tempDiv.innerHTML = ''
     loading.innerText = '유저 뽑는중'
     let tcz = [authorname]
     let gojiCheck = []
@@ -84,7 +81,6 @@ async function run2() {
         loading.innerText = `유저 뽑는중 ${i} / ${cou}`
         for(let i2=0;i2<1000;i2++){
             const target = Ulist[Math.floor(Math.random() * Ulist.length)]
-            console.log(Ulist)
             if(tcz.includes(target)){
                 continue
             }
@@ -93,10 +89,8 @@ async function run2() {
                     continue
                 }
                 const userUrl = `https://arca.live/u/@${encodeURIComponent(target)}`
-                console.log(userUrl)
                 try {
                     const v = await axios.get(`${baseUrl}${userUrl}`)
-                    console.log(v.data.split(Channel).length)
                     if(v.data.split(Channel).length < 30){
                         gojiCheck.push(target)
                         continue
