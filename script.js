@@ -49,6 +49,7 @@ async function run2() {
                     cp: page,
                 },
             });
+            console.log(response)
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(response.data,"text/html");
             let v = xmlDoc.querySelectorAll('.info-row .user-info a')
@@ -76,6 +77,7 @@ async function run2() {
     loading.innerText = '유저 뽑는중'
     let tcz = [authorname]
     let gojiCheck = []
+    console.log(Ulist)
     const cou = document.getElementById('count').value
     for(let i=0;i<cou;i++){
         loading.innerText = `유저 뽑는중 ${i} / ${cou}`
@@ -97,9 +99,7 @@ async function run2() {
                     let len = 0
                     for(let c of l){
                         const h = c.getAttribute('href')
-                        console.log(h)
                         if(h.startsWith(Channel) && (!h.includes('#c'))){
-                            console.log('acceptable')
                             len += 1
                         }
                     }
@@ -118,7 +118,7 @@ async function run2() {
     loading.innerText = ''
     tcz.shift()
     for(let i of tcz){
-        loading.innerText += i + '\n'
+        loading.innerText += i.replace('/','#') + '\n'
     }
     if(tcz.length === 0){
 
