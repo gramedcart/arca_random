@@ -26,9 +26,16 @@ body{
 .input{
     margin-left: 10px;
     margin-right: 10px;
-    width: 80vw;
+    width: calc(80vw - 100px);
     max-width: 1100px;
     font-size: 24px;
+    min-height: 5vh;
+}
+
+.input3{
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
     min-height: 5vh;
 }
 
@@ -46,6 +53,8 @@ body{
     gap: 10px;
 }
 
+
+
 .check label{
     font-size: 36px;
 }
@@ -53,6 +62,11 @@ body{
 .check input{
     height: 36px;
     width: 36px;
+}
+
+.m label{
+    font-size: 30px;
+
 }
 
 

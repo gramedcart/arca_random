@@ -10,7 +10,9 @@ async function run(){
     await run2()
     running = false
 }
-
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 async function run2() {
     const loading = document.getElementById('loading')
@@ -44,6 +46,7 @@ async function run2() {
     while (true) {
         try{
             loading.innerText = `로딩 중 ${page}`
+            await sleep(2000)
             let response = await axios.get(`${baseUrl}${url}`, {
                 params: {
                     cp: page,
@@ -92,7 +95,9 @@ async function run2() {
                 }
                 const userUrl = `https://arca.live/u/@${encodeURIComponent(target)}`
                 try {
+                    await sleep(2000)
                     const v = await axios.get(`${baseUrl}${userUrl}`)
+                    
                     const parser = new DOMParser();
                     const xmlDoc = parser.parseFromString(v.data,"text/html");
                     const l = xmlDoc.querySelectorAll('.card-block a');
@@ -123,7 +128,7 @@ async function run2() {
     if(tcz.length === 0){
 
         loading.innerText = oldMode ? 
-            '추첨에 실패하였습니다\n안전 모드를 켜고 시도해 보세요' :
+            '추첨에 실패하였습니다\n다른 서버 모드를 켜고 시도해 보세요' :
             "추첨에 실패하였습니다"
 
     }
